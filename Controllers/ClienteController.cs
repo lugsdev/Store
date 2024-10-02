@@ -27,5 +27,18 @@ namespace StoreApi.Controllers
 				return BadRequest(e);
 			}
 		}
+
+		[HttpGet("{id:int}/{dataInicio}/{dataFim}")]
+		public IActionResult Get([FromRoute]int id, string dataInicio, string dataFim)
+		{
+			try
+			{
+				return Ok(_clienteRepository.ObterPorData(id, dataInicio, dataFim));
+			}
+			catch (Exception e)
+			{
+				return BadRequest(e);
+			}
+		}
 	}
 }
